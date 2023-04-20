@@ -1,58 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import Home from "./pages/Home";
+import styled from "styled-components";
+import BottomTab from "./components/BottomTab";
+import Events from "./pages/Events";
+import Order from "./pages/Order";
+import { useSelector } from "react-redux";
+import { RootState } from "./app/store";
 
 function App() {
+  const { currentPage } = useSelector((state: RootState) => state.order);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <MainContainer>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/order" element={<Order />} />
+        </Routes>
+        {currentPage !== "/order" && (
+          <BottomContainer>
+            <BottomTab />
+          </BottomContainer>
+        )}
+      </Router>
+    </MainContainer>
   );
 }
 
 export default App;
+
+const BottomContainer = styled.div`
+  width: 100%;
+  height: 8vh;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  /* z-index: 10; */
+`;
+
+const MainContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 768px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100vh;
+  width: 100%;
+`;
