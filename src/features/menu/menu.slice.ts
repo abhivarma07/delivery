@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 type InitialState = {
   path: "Special" | "Food" | "Deserts" | "Beverages";

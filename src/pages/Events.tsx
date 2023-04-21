@@ -1,6 +1,5 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styled from "styled-components";
-import BottomTab from "../components/BottomTab";
 import Empty from "../assests/events.png";
 
 type props = {};

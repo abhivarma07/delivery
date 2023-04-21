@@ -1,6 +1,5 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styled from "styled-components";
-import BottomTab from "../components/BottomTab";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentPage } from "../features/order/orderSlice";

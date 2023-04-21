@@ -27,6 +27,7 @@ const SpecicalBox: FC<props> = ({ image, price, title, id }) => {
           <img
             src={require("../assests/veg.png")}
             style={{ width: 15, height: 15 }}
+            alt={"veg icon"}
           />
           <Title>{title}</Title>
         </div>

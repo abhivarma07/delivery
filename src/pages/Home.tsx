@@ -1,6 +1,5 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styled from "styled-components";
-import BottomTab from "../components/BottomTab";
 import dp from "../assests/dp.png";
 import IconButton from "../components/IconButton";
 import person from "../assests/user.png";
@@ -15,7 +14,7 @@ import { setPath } from "../features/menu/menu.slice";
 type props = {};
 
 const Home: FC<props> = () => {
-  const { path, foodContent } = useSelector((state: RootState) => state.menu);
+  const { path } = useSelector((state: RootState) => state.menu);
   const dispatch = useDispatch();
 
   const handleTabPress = (

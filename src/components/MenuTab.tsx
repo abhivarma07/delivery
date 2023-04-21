@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from "react";
 import styled from "styled-components";
-import { menu } from "../contants";
 import arrowDown from "../assests/arrowDown.png";
 import AddButton from "./AddButton";
 import { useSelector } from "react-redux";
@@ -12,10 +11,6 @@ const MenuTab: FC<props> = () => {
   const { foodContent } = useSelector((state: RootState) => state.menu);
 
   const [active, setActive] = useState(true);
-
-  useEffect(() => {
-    console.log(foodContent);
-  }, []);
 
   return (
     <MainContainer>
